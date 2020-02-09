@@ -1,0 +1,37 @@
+{
+  "name": "probot",
+  "version": "1.0.0",
+  "description": "A probot app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec \"npm start\"",
+    "start": "probot run ./index.js",
+    "lint": "standard --fix",
+    "test": "jest && standard",
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+  },
+  "author": "Alejandra Fernandez",
+  "license": "ISC",
+  "repository": "https://github.com/aleksft/probot.git",
+  "homepage": "https://github.com/aleksft/probot",
+  "keywords": [
+    "probot",
+    "github",
+    "probot-app"
+  ],
+  "dependencies": {
+    "probot": "^7.0.0"
+  },
+  "devDependencies": {
+    "jsdom": "11.11.0",
+    "jest": "^23.4.2",
+    "nodemon": "^1.17.2",
+    "smee-client": "^1.0.2",
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
+}
