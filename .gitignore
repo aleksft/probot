@@ -1,2 +1,6 @@
 node_modules
 package-lock.json
+
+id_rsa
+id_rsa.pub
+key.pem
