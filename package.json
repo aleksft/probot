@@ -8,7 +8,7 @@
     "start": "probot run ./index.js",
     "lint": "standard --fix",
     "test": "jest && standard",
-    "coverage": "jest && coverage",
+    "coverage": "jest --coverage",
     "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "author": "Alejandra Fernandez",
