@@ -10,8 +10,8 @@ script:
   - docker login -u="$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker build -t node:$NODE_VERSION --build-arg NODE_IMAGE="node:${NODE_VERSION}" .
   - docker images
-  - docker tag node:$NODE_VERSION $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD}
-  - docker push $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD}
+  - docker tag node:$NODE_VERSION $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD)
+  - docker push $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD)
 
 stages:
   - test
@@ -23,7 +23,7 @@ jobs:
       name: "Test 8-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=8-jessie
       - NPM_TARGET=test
@@ -31,7 +31,7 @@ jobs:
       name: "Lint 8-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=8-jessie
       - NPM_TARGET=lint
@@ -39,7 +39,7 @@ jobs:
       name: "Coverage 8-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=8-jessie
       - NPM_TARGET=coverage
@@ -47,7 +47,7 @@ jobs:
       name: "Test 10-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=10-jessie
       - NPM_TARGET=test
@@ -55,7 +55,7 @@ jobs:
       name: "Lint 10-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=10-jessie
       - NPM_TARGET=lint
@@ -63,8 +63,8 @@ jobs:
       name: "Coverage 10-jessie"
       install: skip
       script:
-      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-${git rev-parse HEAD} npm run $NPM_TARGET
-      # if: branch = master
+      - docker run --rm $DOCKER_USERNAME/probot:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
+      if: branch = master
       env:
       - NODE_VERSION=10-jessie
       - NPM_TARGET=coverage
