@@ -1,5 +1,6 @@
 # https://hub.docker.com/_/node/
-FROM node:8-onbuild
+ARG NODE_IMAGE=node:8-onbuild
+FROM $NODE_IMAGE
 
 # use debug to troubleshoot
 ENV LOG_LEVEL=error
@@ -24,4 +25,3 @@ USER node
 
 WORKDIR /home/node/probot-hello
 RUN npm install
-
